@@ -1,0 +1,52 @@
+*{
+box-sizing: border-box;
+padding: 0px;
+margin: 0px;
+}
+
+body{
+    align-items: center;
+}
+
+.main{
+}
+
+.bg{
+    background: url(./2022-11-03.png);
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    position: fixed;
+    z-index: -1;
+}
+
+
+.wordsBtns{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.btn:hover{
+    cursor: pointer;
+}
+
+.words{
+    border: solid #8E4E51; 
+    height: 50px;
+    width: 150px;
+    padding: 20px;
+    margin: 5px;
+    justify-content:center;
+    background-color: #8E4E51;
+    text-align: center;
+    color: aliceblue;
+    display: flex;
+}
+
+
+.btn{
+    height: 50px;
+    width: 150px;
+    justify-content: center;
+    margin: 2PX;
+}
