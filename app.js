@@ -12,7 +12,6 @@ console.log('It works!')
 // Hope, Brave, Comfort, Fear... Emotions
 // Coach, Goal, medal, Track... sports
 
-
 const words = [
     {
         word: 'Garden',
@@ -81,7 +80,6 @@ const words = [
 ]
 
 const selectedWords = []
-
 
 
 /*------------------------ Cached Element References ------------------------*/
