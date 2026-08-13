@@ -86,28 +86,30 @@ const selectedWords = []
 const allWordElements = document.querySelectorAll('.words')
 console.log(allWordElements)
 
-const deselectBtnEl = document.querySelector('.deselect')
 
 
 
 /*-------------------------------- Functions --------------------------------*/
 
-console.log(event.target.textContent)
+
 
 
 // function for selecting + deselecting.
 function handleClick(event) {
-    if () {
-        event.target.style.backgroundColor = '#5A594E'
-        event.target.style.border = '#5A594E'
+    console.log(event.target.textContent)
+    event.target.style.backgroundColor = '#5A594E'
+    event.target.style.border = '#5A594E'
+    if(selectedWords.length <4){
         selectedWords.push(event.target.textContent)
-    }
-    else if () {
-        event.target.style.backgroundColor = '#EFEFE6'
-        event.target.style.border = '#EFEFE6'
-        selectedWords.remove((oneWord) => { event.target.textContent })
-    }
-}
+    console.log(selectedWords)   
+}}
+
+// else if () {
+//     event.target.style.backgroundColor = '#EFEFE6'
+//     event.target.style.border = '#EFEFE6'
+//     selectedWords.remove((oneWord) => { event.target.textContent })
+//     // }
+// }
 
 
 //group 4 words, select 4 words ---> submit btn active.
@@ -135,19 +137,18 @@ function deSelectAll() {
 }
 
 // check fo rtheme
-function submitResult() {
-    for (i = 0; i < words.length; i++) {
-        if (words.theme[i] === 0) {
-            return
-        }
-    }
-}
+// function submitResult() {
+//     for (i = 0; i < words.length; i++) {
+//         if (words.theme[i] === 0) {
+//             return
+//         }
+//     }
+// }
 
 
 
 /*----------------------------- Event Listeners -----------------------------*/
 
-// selectWordd.addEventListener('click', selectWord)
 
 allWordElements.forEach((oneWordElement, index) => {
     oneWordElement.addEventListener('click', handleClick)
