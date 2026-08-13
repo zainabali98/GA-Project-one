@@ -4,7 +4,6 @@ console.log('It works!')
 
 /*-------------------------------- Constants --------------------------------*/
 
-
 /*-------------------------------- Variables --------------------------------*/
 
 // Garden, Forest, Grow, River... Nature
@@ -15,68 +14,68 @@ console.log('It works!')
 const words = [
     {
         word: 'Garden',
-        theme:'Nature',
+        theme: 'Nature',
     },
     {
-        word:'Moon',
-        theme:'Space',
-    }
+        word: 'Moon',
+        theme: 'Space',
+    },
     {
-        word:'Hope',
-        theme:'Emotions',
-    }
+        word: 'Hope',
+        theme: 'Emotions',
+    },
     {
-        word:'Coach',
-        theme:'Sports',
-    }
+        word: 'Coach',
+        theme: 'Sports',
+    },
     {
-        word:'Forest',
-        theme:'Nature',
-    }
+        word: 'Forest',
+        theme: 'Nature',
+    },
     {
         word: 'Planet',
-        theme:'Space',
+        theme: 'Space',
     },
     {
-        word:'Brave',
-        theme:'Emotions',
-    }
+        word: 'Brave',
+        theme: 'Emotions',
+    },
     {
-        word:'Goal',
-        theme:'Sports',
-    }
+        word: 'Goal',
+        theme: 'Sports',
+    },
     {
-        word:'Grow',
-        theme:'Nature',
-    }
+        word: 'Grow',
+        theme: 'Nature',
+    },
     {
         word: 'Alien',
-        theme:'Space',
+        theme: 'Space',
     },
     {
-        word:'Comfort',
-        theme:'Emotions',
-    }
+        word: 'Comfort',
+        theme: 'Emotions',
+    },
     {
-        word:'Medal',
-        theme:'Sports',
-    }
+        word: 'Medal',
+        theme: 'Sports',
+    },
     {
-        word:'River',
-        theme:'Nature',
-    }
+        word: 'River',
+        theme: 'Nature',
+    },
     {
         word: 'Spaceship',
-        theme:'Space',
+        theme: 'Space',
     },
     {
-        word:'Fear',
-        theme:'Emotions',
-    }
+        word: 'Fear',
+        theme: 'Emotions',
+    },
     {
-        word:'Track',
-        theme:'Sports',
-    }
+        word: 'Track',
+        theme: 'Sports',
+    },
 ]
 
 const selectedWords = []
@@ -87,42 +86,61 @@ const selectedWords = []
 const allWordElements = document.querySelectorAll('.words')
 console.log(allWordElements)
 
+const deselectBtnEl = document.querySelector('.deselect')
+
+
+
 /*-------------------------------- Functions --------------------------------*/
 
-function selectWord(){
-    console.log('it works!!!')
+console.log(event.target.textContent)
+
+
+// function for selecting + deselecting.
+function handleClick(event) {
+    if () {
+        event.target.style.backgroundColor = '#5A594E'
+        event.target.style.border = '#5A594E'
+        selectedWords.push(event.target.textContent)
+    }
+    else if () {
+        event.target.style.backgroundColor = '#EFEFE6'
+        event.target.style.border = '#EFEFE6'
+        selectedWords.remove((oneWord) => { event.target.textContent })
+    }
 }
 
-function deSelectWord(){
-
-}
 
 //group 4 words, select 4 words ---> submit btn active.
-function selectFourWords(){
-
-}
+// function selectFourWords(){  
+// }
 
 // after submit btn 
-function checkForTheme(){
-
-}
-
+// function checkForTheme(){}
 
 //if theme correct
-function butInOneSquare(){
+function butInOneSquare() {
 
 }
 
-function remainingAttempts(){
+function remainingAttempts() {
 
 }
 
-function shuffleBtn(){
+function shuffleBtn() {
 
 }
 
-function deSelectAll(){
+function deSelectAll() {
 
+}
+
+// check fo rtheme
+function submitResult() {
+    for (i = 0; i < words.length; i++) {
+        if (words.theme[i] === 0) {
+            return
+        }
+    }
 }
 
 
@@ -131,12 +149,15 @@ function deSelectAll(){
 
 // selectWordd.addEventListener('click', selectWord)
 
-allWordElements.forEach((oneWordElement, index)=>{
-    oneWordElement.addEventListener('click',selectWord)
+allWordElements.forEach((oneWordElement, index) => {
+    oneWordElement.addEventListener('click', handleClick)
     oneWordElement.textContent = words[index].word
 
 })
 
-for(let oneWordElement of allWordElements){
-    oneWordElement.addEventListener('click',selectWord)
+
+for (let oneWordElement of allWordElements) {
+    oneWordElement.addEventListener('click', handleClick)
 }
+
+// deselectBtnEl.addEventListener('click', deSelectWord)
