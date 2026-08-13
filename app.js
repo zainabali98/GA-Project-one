@@ -80,6 +80,8 @@ const words = [
 
 const selectedWords = []
 
+const selectedWordIndex = []
+
 
 /*------------------------ Cached Element References ------------------------*/
 
@@ -91,25 +93,27 @@ console.log(allWordElements)
 
 /*-------------------------------- Functions --------------------------------*/
 
-
-
-
 // function for selecting + deselecting.
 function handleClick(event) {
     console.log(event.target.textContent)
-    event.target.style.backgroundColor = '#5A594E'
-    event.target.style.border = '#5A594E'
-    if(selectedWords.length <4){
-        selectedWords.push(event.target.textContent)
-    console.log(selectedWords)   
-}}
+    const selectedWordIndex = selectedWords.findIndex((oneWord) => { return oneWord === event.target.textContent })
 
-// else if () {
-//     event.target.style.backgroundColor = '#EFEFE6'
-//     event.target.style.border = '#EFEFE6'
-//     selectedWords.remove((oneWord) => { event.target.textContent })
-//     // }
-// }
+    if (selectedWordIndex === -1) {
+        event.target.style.backgroundColor = '#5A594E'
+        event.target.style.border = '#5A594E'
+        if (selectedWords.length < 4) {
+            selectedWords.push(event.target.textContent)
+            console.log(selectedWords)
+        }
+
+    }
+    else {
+        event.target.style.backgroundColor = '#EFEFE6'
+        event.target.style.border = '#EFEFE6'
+        selectedWords.splice(selectedWordIndex, 1)
+    }
+}
+
 
 
 //group 4 words, select 4 words ---> submit btn active.
@@ -156,9 +160,5 @@ allWordElements.forEach((oneWordElement, index) => {
 
 })
 
-
-for (let oneWordElement of allWordElements) {
-    oneWordElement.addEventListener('click', handleClick)
-}
 
 // deselectBtnEl.addEventListener('click', deSelectWord)
