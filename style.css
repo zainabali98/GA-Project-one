@@ -8,18 +8,6 @@ body{
     align-items: center;
 }
 
-.main{
-}
-
-/* .bg{
-    background: url(./2022-11-03.png);
-    inset: 0;
-    background-size: cover;
-    background-position: center;
-    position: fixed;
-    z-index: -1;
-} */
-
 
 .wordsBtns{
     display: grid;
@@ -27,6 +15,7 @@ body{
     justify-content: center;
     align-items: center;
     text-align: center;
+    
 }
 
 .btn:hover{
@@ -52,4 +41,9 @@ body{
     width: 150px;
     justify-content: center;
     margin: 2PX;
+    border-radius: 10px;
+}
+
+.actionBtns{
+    border-radius: 30px;
 }

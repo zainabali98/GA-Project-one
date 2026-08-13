@@ -119,31 +119,47 @@ function handleClick(event) {
 }
 
 function deSelectAll() {
-    selectedWords.splice(0, 4)
-    console.log(selectedWords)
+
+    // for (let i = 0; i < selectedWords.length; i++) {
+    //     selectedWords[i].style.backgroundColor = '#EFEFE6'
+    //     selectedWords[i].style.border = '#EFEFE6'}
+
+        selectedWords.splice(0, 4)
+                console.log(selectedWords)
+
+    }
 
 
+
+/// .theme ??? ask about it.
+function submit() {
+    if (selectedWords.length === 4) {
+
+        const groupTheme = words.find((object) => {object.word === selectedWords[0].theme});
+
+        for(let i = 1; i < selectedWords.length; i++){
+          const originalTheme = words.find((object) => {object.word === selectedWords[i].theme});
+        }
+        if(groupTheme !== originalTheme){
+            console.log('incorrect')
+
+        }else{
+            console.log('correct theme!')
+        }
+        /// + put in one square
+    }else{
+        //lose an attempt
+    }
 }
 
 
+// //if theme correct
+// function butInOneSquare() {
+// }
 
-function submit(){
-    if(selectedWords.length === 4){
-        for(i = 0; words[i].theme === 'Nature'; i++){
-                console.log('close to answer!')
-            }
-}}
-
-
-//if theme correct
-function butInOneSquare() {
-
-}
-
-//after submitbtn
-function remainingAttempts() {
-
-}
+// //after submitbtn
+// function remainingAttempts() {
+// }
 
 function shuffleBtn() {
 
