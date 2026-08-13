@@ -88,7 +88,9 @@ const selectedWordIndex = []
 const allWordElements = document.querySelectorAll('.words')
 console.log(allWordElements)
 
+const deSelectAllEl = document.querySelector('.deselect')
 
+const submitEL = document.querySelector('.submit')
 
 
 /*-------------------------------- Functions --------------------------------*/
@@ -99,10 +101,11 @@ function handleClick(event) {
     const selectedWordIndex = selectedWords.findIndex((oneWord) => { return oneWord === event.target.textContent })
 
     if (selectedWordIndex === -1) {
-        event.target.style.backgroundColor = '#5A594E'
-        event.target.style.border = '#5A594E'
+
         if (selectedWords.length < 4) {
             selectedWords.push(event.target.textContent)
+            event.target.style.backgroundColor = '#5A594E'
+            event.target.style.border = '#5A594E'
             console.log(selectedWords)
         }
 
@@ -111,23 +114,32 @@ function handleClick(event) {
         event.target.style.backgroundColor = '#EFEFE6'
         event.target.style.border = '#EFEFE6'
         selectedWords.splice(selectedWordIndex, 1)
+        console.log(selectedWords)
     }
+}
+
+function deSelectAll() {
+    selectedWords.splice(0, 4)
+
 }
 
 
 
-//group 4 words, select 4 words ---> submit btn active.
-// function selectFourWords(){  
-// }
+function checkForTheme(){
+    if(selectedWords.length === 4){
+     console.log('submit!')
 
-// after submit btn 
-// function checkForTheme(){}
+    }else{
+
+    }
+}
 
 //if theme correct
 function butInOneSquare() {
 
 }
 
+//after submitbtn
 function remainingAttempts() {
 
 }
@@ -136,9 +148,7 @@ function shuffleBtn() {
 
 }
 
-function deSelectAll() {
 
-}
 
 // check fo rtheme
 // function submitResult() {
@@ -161,4 +171,6 @@ allWordElements.forEach((oneWordElement, index) => {
 })
 
 
-// deselectBtnEl.addEventListener('click', deSelectWord)
+deSelectAllEl.addEventListener('click', deSelectAll)
+
+submitEL.addEventListener('click', checkForTheme)
