@@ -1,4 +1,4 @@
-console.log('It works!')
+console.log('Project-1: Connections')
 
 
 
@@ -86,7 +86,7 @@ const selectedWordIndex = []
 /*------------------------ Cached Element References ------------------------*/
 
 const allWordElements = document.querySelectorAll('.words')
-console.log(allWordElements)
+// console.log(allWordElements)
 
 const deSelectAllEl = document.querySelector('.deselect')
 
@@ -120,19 +120,20 @@ function handleClick(event) {
 
 function deSelectAll() {
     selectedWords.splice(0, 4)
+    console.log(selectedWords)
+
 
 }
 
 
 
-function checkForTheme(){
+function submit(){
     if(selectedWords.length === 4){
-     console.log('submit!')
+        for(i = 0; words[i].theme === 'Nature'; i++){
+                console.log('close to answer!')
+            }
+}}
 
-    }else{
-
-    }
-}
 
 //if theme correct
 function butInOneSquare() {
@@ -150,16 +151,6 @@ function shuffleBtn() {
 
 
 
-// check fo rtheme
-// function submitResult() {
-//     for (i = 0; i < words.length; i++) {
-//         if (words.theme[i] === 0) {
-//             return
-//         }
-//     }
-// }
-
-
 
 /*----------------------------- Event Listeners -----------------------------*/
 
@@ -173,4 +164,4 @@ allWordElements.forEach((oneWordElement, index) => {
 
 deSelectAllEl.addEventListener('click', deSelectAll)
 
-submitEL.addEventListener('click', checkForTheme)
+submitEL.addEventListener('click', submit)
