@@ -108,7 +108,6 @@ function handleClick(event) {
             event.target.style.border = '#5A594E'
             console.log(selectedWords)
         }
-
     }
     else {
         event.target.style.backgroundColor = '#EFEFE6'
@@ -124,10 +123,10 @@ function deSelectAll() {
     //     selectedWords[i].style.backgroundColor = '#EFEFE6'
     //     selectedWords[i].style.border = '#EFEFE6'}
 
-        selectedWords.splice(0, 4)
-                console.log(selectedWords)
+    selectedWords.splice(0, 4)
+    console.log(selectedWords)
 
-    }
+}
 
 
 
@@ -135,22 +134,22 @@ function deSelectAll() {
 function submit() {
     if (selectedWords.length === 4) {
 
-        const groupTheme = words.find((object) => {object.word === selectedWords[0].theme});
+        const firstTheme = words.find((item) => item.word === selectedWords[0]).theme
+        console.log(firstTheme)
 
-        for(let i = 1; i < selectedWords.length; i++){
-          const originalTheme = words.find((object) => {object.word === selectedWords[i].theme});
-        }
-        if(groupTheme !== originalTheme){
-            console.log('incorrect')
 
-        }else{
+        for (let i = 0; i < selectedWords.length; i++) {
+            const groupTheme = words.find((item) => item.word === selectedWords[i]).theme
+        
+        if (groupTheme !== firstTheme) {
+            console.log('incorrect theme!')
+
+        } else {
             console.log('correct theme!')
         }
         /// + put in one square
-    }else{
-        //lose an attempt
-    }
-}
+ }
+}}
 
 
 // //if theme correct
