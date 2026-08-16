@@ -89,6 +89,7 @@ const allWordElements = document.querySelectorAll('.words')
 const deSelectAllEl = document.querySelector('.deselect')
 
 const submitEL = document.querySelector('.submit')
+const shuffleEl = document.querySelector('.shuffle')
 
 
 /*-------------------------------- Functions --------------------------------*/
@@ -145,6 +146,9 @@ function submit() {
 
         } if (isCorrect === false) {
             console.log('incorrect theme!')
+        } 
+        else{
+            console.log('Correct theme!')
         }
     }
 }
@@ -159,7 +163,14 @@ function submit() {
 // }
 
 function shuffleBtn() {
+    // console.log('shuffle works!')
+    words.sort(() => Math.random() -0.5)
+    console.log(words)
+    allWordElements.forEach((oneWordElement, index) => {
+    oneWordElement.textContent = words[index].word
+    console.log(words[index].word)
 
+})
 }
 
 
@@ -176,5 +187,5 @@ allWordElements.forEach((oneWordElement, index) => {
 
 
 deSelectAllEl.addEventListener('click', deSelectAll)
-
 submitEL.addEventListener('click', submit)
+shuffleEl.addEventListener('click', shuffleBtn)
