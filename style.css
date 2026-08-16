@@ -21,7 +21,7 @@ body {
     grid-template-columns: repeat(4, 1fr);
     gap: 10px;
     margin-bottom: 30px;
-    text-align: center;    
+    text-align: center;   
     
 }
 
@@ -47,7 +47,7 @@ body {
 
 
 .btn{
-    height: 50px;
+    height: 70px;
     width: 150px;
     justify-content: center;
     margin: 2PX;
@@ -56,6 +56,7 @@ body {
 
 .actionBtns{
     border-radius: 30px;
+    height: 50px;
 }
 
 h1{
@@ -83,3 +84,41 @@ h2{
     margin-left: 10px;
 }
 
+
+.isCorrect{
+    border: solid #F9DF6D; 
+    background-color: #F9DF6D;
+}
+
+.selected{
+    background-color: #5A594E;
+}
+.not-selected{
+    background-color: #EFEFE6;
+    border: #5A594E
+}
+
+
+.difficulty-1{
+    background-color: #F9DF6D;
+}
+
+.difficulty-2{
+    background-color: #A0C35A;
+}
+
+.difficulty-3{
+    background-color: #B0C4EF;
+}
+
+.difficulty-4{
+    background-color: #BA81C5;
+}
+
+
+
+// colors
+/* yellow #F9DF6D
+green #A0C35A
+blue #B0C4EF
+purple #BA81C5 */

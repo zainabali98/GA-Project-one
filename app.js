@@ -11,66 +11,93 @@ const words = [
     {
         word: 'Garden',
         theme: 'Nature',
+        difficulty:1
     },
     {
         word: 'Moon',
         theme: 'Space',
+        difficulty:2
+
     },
     {
         word: 'Hope',
         theme: 'Emotions',
+        difficulty:3
+
     },
     {
         word: 'Coach',
         theme: 'Sports',
+        difficulty:4
+
     },
     {
         word: 'Forest',
         theme: 'Nature',
+        difficulty:1
+
     },
     {
         word: 'Planet',
         theme: 'Space',
+        difficulty:2
+
     },
     {
         word: 'Brave',
         theme: 'Emotions',
+        difficulty:3
+
     },
     {
         word: 'Goal',
         theme: 'Sports',
+        difficulty:4
+
     },
     {
         word: 'Grow',
         theme: 'Nature',
+        difficulty:1
     },
     {
         word: 'Alien',
         theme: 'Space',
+        difficulty:2
     },
     {
         word: 'Comfort',
         theme: 'Emotions',
+        difficulty:3
+
     },
     {
         word: 'Medal',
         theme: 'Sports',
+        difficulty:4
+
     },
     {
         word: 'River',
         theme: 'Nature',
+        difficulty:1
+
     },
     {
         word: 'Spaceship',
         theme: 'Space',
+        difficulty:2
+
     },
     {
         word: 'Fear',
         theme: 'Emotions',
+        difficulty:3
     },
     {
         word: 'Track',
         theme: 'Sports',
+        difficulty:4
     },
 ]
 
@@ -79,6 +106,7 @@ const selectedWordIndex = []
 /*-------------------------------- Variables --------------------------------*/
 
 let attempts = 4
+console.log('attempts:' + attempts)
 
 
 /*------------------------ Cached Element References ------------------------*/
@@ -103,14 +131,18 @@ function handleClick(event) {
 
         if (selectedWords.length < 4) {
             selectedWords.push(event.target.textContent)
-            event.target.style.backgroundColor = '#5A594E'
-            event.target.style.border = '#5A594E'
+        event.target.classList.remove('not-selected')
+        event.target.classList.add('selected')
+
+            // event.target.style.backgroundColor = '#5A594E'
+            // event.target.style.border = '#5A594E'
             console.log(selectedWords)
         }
     }
     else {
-        event.target.style.backgroundColor = '#EFEFE6'
-        event.target.style.border = '#EFEFE6'
+        event.target.classList.add('not-selected')
+                event.target.classList.remove('selected')
+
         selectedWords.splice(selectedWordIndex, 1)
         console.log(selectedWords)
     }
@@ -118,9 +150,9 @@ function handleClick(event) {
 
 function deSelectAll() {
 
-    // for (let i = 0; i < selectedWords.length; i++) {
-    //     selectedWords[i].style.backgroundColor = '#EFEFE6'
-    //     selectedWords[i].style.border = '#EFEFE6'}
+    for (let i = 0; i < allWordElements.length; i++) {
+        allWordElements[i].classList.add('not-selected')
+}
 
     selectedWords.splice(0, 4)
     console.log(selectedWords)
@@ -137,7 +169,7 @@ function submit() {
         console.log(firstTheme)
 
         let isCorrect = true;
-        for (let i = 0; i < selectedWords.length; i++) {
+        for (let i = 1; i < selectedWords.length; i++) {
             const groupTheme = words.find((item) => item.word === selectedWords[i]).theme
 
             if (groupTheme !== firstTheme) {
@@ -146,8 +178,24 @@ function submit() {
 
         } if (isCorrect === false) {
             console.log('incorrect theme!')
-        } 
-        else{
+            if (attempts <= 4) {
+                attempts = attempts - 1
+                console.log('attempts:' + attempts)
+            } else if (attempts <= 0) {
+                console.log('No more attempts!')
+            }
+        }
+        else {
+            const difficulty = words.find((word)=>word.word === selectedWords[0]).difficulty
+            console.log(difficulty)
+            allWordElements.forEach((element)=>{
+                if(selectedWords.includes(element.textContent))
+               {
+                 element.classList.add(`difficulty-${difficulty}`)
+                 element.classList.remove(`selected`)
+                }
+
+            })
             console.log('Correct theme!')
         }
     }
@@ -158,19 +206,25 @@ function submit() {
 // function butInOneSquare() {
 // }
 
-// //after submitbtn
-// function remainingAttempts() {
-// }
+//after submitbtn
+function Attempts() {
+    if (attempts <= 4) {
+        console.log(`${arguments}attempts remaining`)
+    }
+    else if (attempts <= 0) {
+        console.log('No more attempts!')
+    }
+}
 
 function shuffleBtn() {
     // console.log('shuffle works!')
-    words.sort(() => Math.random() -0.5)
+    words.sort(() => Math.random() - 0.5)
     console.log(words)
     allWordElements.forEach((oneWordElement, index) => {
-    oneWordElement.textContent = words[index].word
-    console.log(words[index].word)
+        oneWordElement.textContent = words[index].word
+        console.log(words[index].word)
 
-})
+    })
 }
 
 
