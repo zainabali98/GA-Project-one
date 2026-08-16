@@ -4,15 +4,24 @@ padding: 0px;
 margin: 0px;
 }
 
-
+body {
+    background-color: #f7f7f5;
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+    color: #111;
+}
 
 
 .wordsBtns{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+    gap: 10px;
+    margin-bottom: 30px;
+    text-align: center;    
     
 }
 
@@ -25,11 +34,14 @@ margin: 0px;
     height: 50px;
     width: 150px;
     padding: 20px;
-    margin: 5px;
     background-color: #EFEFE6;
     text-align: center;
     color: black;
     display: flex;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
     
 }
 
@@ -45,3 +57,29 @@ margin: 0px;
 .actionBtns{
     border-radius: 30px;
 }
+
+h1{
+    font-size: 64px;
+    margin-bottom: 30px;
+}
+
+h2{
+    font-size: 24px;
+    margin-bottom: 30px;
+    
+}
+
+.attempts{
+    display: flex;
+    gap: 5px;
+    align-items:baseline
+    
+}
+.attempt{
+    width: 10px;
+    height: 10px;
+    background-color: black;
+    border-radius: 50%;
+    margin-left: 10px;
+}
+

@@ -78,7 +78,7 @@ const selectedWords = []
 const selectedWordIndex = []
 /*-------------------------------- Variables --------------------------------*/
 
-
+let attempts = 4
 
 
 /*------------------------ Cached Element References ------------------------*/
