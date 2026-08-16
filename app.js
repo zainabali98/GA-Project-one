@@ -3,14 +3,10 @@ console.log('Project-1: Connections')
 
 
 /*-------------------------------- Constants --------------------------------*/
-
-/*-------------------------------- Variables --------------------------------*/
-
 // Garden, Forest, Grow, River... Nature
 // Moon, Planet, Alien, spaceship... Space
 // Hope, Brave, Comfort, Fear... Emotions
 // Coach, Goal, medal, Track... sports
-
 const words = [
     {
         word: 'Garden',
@@ -79,8 +75,10 @@ const words = [
 ]
 
 const selectedWords = []
-
 const selectedWordIndex = []
+/*-------------------------------- Variables --------------------------------*/
+
+
 
 
 /*------------------------ Cached Element References ------------------------*/
@@ -137,19 +135,19 @@ function submit() {
         const firstTheme = words.find((item) => item.word === selectedWords[0]).theme
         console.log(firstTheme)
 
-
+        let isCorrect = true;
         for (let i = 0; i < selectedWords.length; i++) {
             const groupTheme = words.find((item) => item.word === selectedWords[i]).theme
-        
-        if (groupTheme !== firstTheme) {
-            console.log('incorrect theme!')
 
-        } else {
-            console.log('correct theme!')
+            if (groupTheme !== firstTheme) {
+                isCorrect = false;
+            }
+
+        } if (isCorrect === false) {
+            console.log('incorrect theme!')
         }
-        /// + put in one square
- }
-}}
+    }
+}
 
 
 // //if theme correct
