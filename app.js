@@ -119,7 +119,9 @@ const deSelectAllEl = document.querySelector('.deselect')
 
 const submitEL = document.querySelector('.submit')
 const shuffleEl = document.querySelector('.shuffle')
-
+const attemptsEl = document.querySelectorAll('.attempt')
+console.log(attemptsEl)
+console.log(attemptsEl.length)
 
 /*-------------------------------- Functions --------------------------------*/
 
@@ -159,7 +161,7 @@ function deSelectAll() {
 
 
 
-/// .theme ??? ask about it.
+
 function submit() {
     if (selectedWords.length === 4 && attempts > 0) {
 
@@ -179,13 +181,19 @@ function submit() {
             selectedWords.splice(0, 4)
             console.log(selectedWords)
 
-for (let i = 0; i < allWordElements.length; i++) {
-        allWordElements[i].classList.add('not-selected')
-    }
+            for (let i = 0; i < allWordElements.length; i++) {
+                allWordElements[i].classList.add('not-selected')
+            }
             if (attempts > 0) {
                 attempts = attempts - 1
+
+                attemptsEl[attempts].classList.add('usedAttempt')
+                attemptsEl[attempts].classList.remove('attempt')
+
                 console.log('attempts remaining:' + attempts)
-            } if (attempts === 0) {
+                
+            }
+            if (attempts === 0) {
                 console.log('No more attempts!')
             }
         }
