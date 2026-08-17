@@ -102,18 +102,26 @@ h2{
 
 .difficulty-1{
     background-color: #F9DF6D;
+        border-color: #F9DF6D;
+
 }
 
 .difficulty-2{
     background-color: #A0C35A;
+        border-color: #A0C35A;
+
 }
 
 .difficulty-3{
     background-color: #B0C4EF;
+        border-color: #B0C4EF;
+
 }
 
 .difficulty-4{
     background-color: #BA81C5;
+        border-color: #BA81C5;
+
 }
 
 

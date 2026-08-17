@@ -134,9 +134,6 @@ function handleClick(event) {
             selectedWords.push(event.target.textContent)
             event.target.classList.remove('not-selected')
             event.target.classList.add('selected')
-
-            // event.target.style.backgroundColor = '#5A594E'
-            // event.target.style.border = '#5A594E'
             console.log(selectedWords)
         }
     }
@@ -164,7 +161,7 @@ function deSelectAll() {
 
 /// .theme ??? ask about it.
 function submit() {
-    if (selectedWords.length === 4) {
+    if (selectedWords.length === 4 && attempts > 0) {
 
         const firstTheme = words.find((item) => item.word === selectedWords[0]).theme
         console.log(firstTheme)
@@ -179,16 +176,18 @@ function submit() {
 
         } if (isCorrect === false) {
             console.log('incorrect theme!')
-            if (attempts <= 4) {
+            selectedWords.splice(0, 4)
+            console.log(selectedWords)
+            if (attempts > 0) {
                 attempts = attempts - 1
-                console.log('attempts:' + attempts)
-            } else if (attempts <= 0) {
+                console.log('attempts remaining:' + attempts)
+            } if (attempts === 0) {
                 console.log('No more attempts!')
             }
         }
         else {
             const difficulty = words.find((word) => word.word === selectedWords[0]).difficulty
-            console.log(difficulty)
+            console.log(`difficulty:` + difficulty)
             allWordElements.forEach((element) => {
                 if (selectedWords.includes(element.textContent)) {
                     element.classList.add(`difficulty-${difficulty}`)
@@ -198,8 +197,11 @@ function submit() {
             })
             console.log('Correct theme!')
             const copy = []
-            selectedWords.push((word)=>{copy.push(word)})
+            selectedWords.forEach((word) => { copy.push(word) })
             clearedWords.push(copy)
+            console.log(clearedWords)
+            selectedWords.splice(0, 4)
+            console.log(selectedWords)
         }
     }
 }
@@ -209,15 +211,7 @@ function submit() {
 // function butInOneSquare() {
 // }
 
-//after submitbtn
-function Attempts() {
-    if (attempts <= 4) {
-        console.log(`${arguments}attempts remaining`)
-    }
-    else if (attempts <= 0) {
-        console.log('No more attempts!')
-    }
-}
+
 
 function shuffleBtn() {
     // console.log('shuffle works!')
