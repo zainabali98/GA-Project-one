@@ -120,31 +120,36 @@ const deSelectAllEl = document.querySelector('.deselect')
 const submitEL = document.querySelector('.submit')
 const shuffleEl = document.querySelector('.shuffle')
 const attemptsEl = document.querySelectorAll('.attempt')
-console.log(attemptsEl)
-console.log(attemptsEl.length)
+// console.log(attemptsEl)
+// console.log(attemptsEl.length)
 
 /*-------------------------------- Functions --------------------------------*/
 
+
+
 // function for selecting + deselecting.
 function handleClick(event) {
-    console.log(event.target.textContent)
-    const selectedWordIndex = selectedWords.findIndex((oneWord) => { return oneWord === event.target.textContent })
+    if (event.target.classList.contains('clickable')
+    ) {
+        console.log(event.target.textContent)
+        const selectedWordIndex = selectedWords.findIndex((oneWord) => { return oneWord === event.target.textContent })
 
-    if (selectedWordIndex === -1) {
+        if (selectedWordIndex === -1) {
 
-        if (selectedWords.length < 4) {
-            selectedWords.push(event.target.textContent)
-            event.target.classList.remove('not-selected')
-            event.target.classList.add('selected')
+            if (selectedWords.length < 4) {
+                selectedWords.push(event.target.textContent)
+                event.target.classList.remove('not-selected')
+                event.target.classList.add('selected')
+                console.log(selectedWords)
+            }
+        }
+        else {
+            event.target.classList.add('not-selected')
+            event.target.classList.remove('selected')
+
+            selectedWords.splice(selectedWordIndex, 1)
             console.log(selectedWords)
         }
-    }
-    else {
-        event.target.classList.add('not-selected')
-        event.target.classList.remove('selected')
-
-        selectedWords.splice(selectedWordIndex, 1)
-        console.log(selectedWords)
     }
 }
 
@@ -177,6 +182,7 @@ function submit() {
             }
 
         } if (isCorrect === false) {
+
             console.log('incorrect theme!')
             selectedWords.splice(0, 4)
             console.log(selectedWords)
@@ -191,7 +197,7 @@ function submit() {
                 attemptsEl[attempts].classList.remove('attempt')
 
                 console.log('attempts remaining:' + attempts)
-                
+
             }
             if (attempts === 0) {
                 console.log('No more attempts!')
@@ -202,16 +208,22 @@ function submit() {
             console.log(`difficulty:` + difficulty)
             allWordElements.forEach((element) => {
                 if (selectedWords.includes(element.textContent)) {
+                    element.classList.add('unclickable')
+                    element.classList.remove('clickable')
                     element.classList.add(`difficulty-${difficulty}`)
                     element.classList.remove(`selected`)
+
                 }
 
             })
+
             console.log('Correct theme!')
+
             const copy = []
             selectedWords.forEach((word) => { copy.push(word) })
             clearedWords.push(copy)
             console.log(clearedWords)
+
             selectedWords.splice(0, 4)
             console.log(selectedWords)
         }
@@ -241,6 +253,7 @@ function shuffleBtn() {
 allWordElements.forEach((oneWordElement, index) => {
     oneWordElement.addEventListener('click', handleClick)
     oneWordElement.textContent = words[index].word
+    oneWordElement.classList.add('clickable')
 
 })
 

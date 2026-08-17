@@ -41,6 +41,7 @@ body {
     justify-content: center;
     align-items: center;
     text-align: center;
+    font-weight: 700;
     
 }
 
@@ -106,6 +107,15 @@ h2{
 .not-selected{
     background-color: #EFEFE6;
     border-color: #EFEFE6;
+}
+
+
+.clickable{
+
+}
+
+.unclickable{
+
 }
 
 
