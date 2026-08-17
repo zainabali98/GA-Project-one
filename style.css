@@ -38,7 +38,6 @@ body {
     text-align: center;
     color: black;
     display: flex;
-    display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
@@ -85,17 +84,19 @@ h2{
 }
 
 
-.isCorrect{
+/* .isCorrect{
     border: solid #F9DF6D; 
     background-color: #F9DF6D;
-}
+} */
 
 .selected{
     background-color: #5A594E;
+        border-color: #5A594E;
 }
+
 .not-selected{
     background-color: #EFEFE6;
-    border: #5A594E
+    border-color: #EFEFE6;
 }
 
 

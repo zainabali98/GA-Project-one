@@ -11,98 +11,99 @@ const words = [
     {
         word: 'Garden',
         theme: 'Nature',
-        difficulty:1
+        difficulty: 1
     },
     {
         word: 'Moon',
         theme: 'Space',
-        difficulty:2
+        difficulty: 2
 
     },
     {
         word: 'Hope',
         theme: 'Emotions',
-        difficulty:3
+        difficulty: 3
 
     },
     {
         word: 'Coach',
         theme: 'Sports',
-        difficulty:4
+        difficulty: 4
 
     },
     {
         word: 'Forest',
         theme: 'Nature',
-        difficulty:1
+        difficulty: 1
 
     },
     {
         word: 'Planet',
         theme: 'Space',
-        difficulty:2
+        difficulty: 2
 
     },
     {
         word: 'Brave',
         theme: 'Emotions',
-        difficulty:3
+        difficulty: 3
 
     },
     {
         word: 'Goal',
         theme: 'Sports',
-        difficulty:4
+        difficulty: 4
 
     },
     {
         word: 'Grow',
         theme: 'Nature',
-        difficulty:1
+        difficulty: 1
     },
     {
         word: 'Alien',
         theme: 'Space',
-        difficulty:2
+        difficulty: 2
     },
     {
         word: 'Comfort',
         theme: 'Emotions',
-        difficulty:3
+        difficulty: 3
 
     },
     {
         word: 'Medal',
         theme: 'Sports',
-        difficulty:4
+        difficulty: 4
 
     },
     {
         word: 'River',
         theme: 'Nature',
-        difficulty:1
+        difficulty: 1
 
     },
     {
         word: 'Spaceship',
         theme: 'Space',
-        difficulty:2
+        difficulty: 2
 
     },
     {
         word: 'Fear',
         theme: 'Emotions',
-        difficulty:3
+        difficulty: 3
     },
     {
         word: 'Track',
         theme: 'Sports',
-        difficulty:4
+        difficulty: 4
     },
 ]
 
 const selectedWords = []
 const selectedWordIndex = []
+const clearedWords = [] // to store cleared arrays in one array
 /*-------------------------------- Variables --------------------------------*/
 
 let attempts = 4
@@ -131,8 +132,8 @@ function handleClick(event) {
 
         if (selectedWords.length < 4) {
             selectedWords.push(event.target.textContent)
-        event.target.classList.remove('not-selected')
-        event.target.classList.add('selected')
+            event.target.classList.remove('not-selected')
+            event.target.classList.add('selected')
 
             // event.target.style.backgroundColor = '#5A594E'
             // event.target.style.border = '#5A594E'
@@ -141,7 +142,7 @@ function handleClick(event) {
     }
     else {
         event.target.classList.add('not-selected')
-                event.target.classList.remove('selected')
+        event.target.classList.remove('selected')
 
         selectedWords.splice(selectedWordIndex, 1)
         console.log(selectedWords)
@@ -152,7 +153,7 @@ function deSelectAll() {
 
     for (let i = 0; i < allWordElements.length; i++) {
         allWordElements[i].classList.add('not-selected')
-}
+    }
 
     selectedWords.splice(0, 4)
     console.log(selectedWords)
@@ -186,17 +187,19 @@ function submit() {
             }
         }
         else {
-            const difficulty = words.find((word)=>word.word === selectedWords[0]).difficulty
+            const difficulty = words.find((word) => word.word === selectedWords[0]).difficulty
             console.log(difficulty)
-            allWordElements.forEach((element)=>{
-                if(selectedWords.includes(element.textContent))
-               {
-                 element.classList.add(`difficulty-${difficulty}`)
-                 element.classList.remove(`selected`)
+            allWordElements.forEach((element) => {
+                if (selectedWords.includes(element.textContent)) {
+                    element.classList.add(`difficulty-${difficulty}`)
+                    element.classList.remove(`selected`)
                 }
 
             })
             console.log('Correct theme!')
+            const copy = []
+            selectedWords.push((word)=>{copy.push(word)})
+            clearedWords.push(copy)
         }
     }
 }
