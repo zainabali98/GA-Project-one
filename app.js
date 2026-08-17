@@ -178,6 +178,10 @@ function submit() {
             console.log('incorrect theme!')
             selectedWords.splice(0, 4)
             console.log(selectedWords)
+
+for (let i = 0; i < allWordElements.length; i++) {
+        allWordElements[i].classList.add('not-selected')
+    }
             if (attempts > 0) {
                 attempts = attempts - 1
                 console.log('attempts remaining:' + attempts)
@@ -212,7 +216,6 @@ function submit() {
 // }
 
 
-
 function shuffleBtn() {
     // console.log('shuffle works!')
     words.sort(() => Math.random() - 0.5)
@@ -223,9 +226,6 @@ function shuffleBtn() {
 
     })
 }
-
-
-
 
 /*----------------------------- Event Listeners -----------------------------*/
 
