@@ -134,7 +134,8 @@ const messageEl = document.querySelector('#message')
 
 // function for selecting + deselecting.
 function handleClick(event) {
-    if (event.target.classList.contains('clickable')
+    if (event.target.classList.contains('clickable') && attempts > 0
+        
     ) {
         console.log(event.target.textContent)
         const selectedWordIndex = selectedWords.findIndex((oneWord) => { return oneWord === event.target.textContent })
@@ -205,6 +206,7 @@ function submit() {
 
             }
             if (attempts === 0) {
+                lose()
                 console.log('No more attempts!')
             }
         }
@@ -227,6 +229,7 @@ function submit() {
             const copy = []
             selectedWords.forEach((word) => { copy.push(word) })
             clearedWords.push(copy)
+            updateMessage()
             console.log(clearedWords)
 
             selectedWords.splice(0, 4)
@@ -271,6 +274,27 @@ function shuffleBtn() {
     })
 }
 
+
+function updateMessage(){
+    if(clearedWords.length === 0){
+        messageEl.textContent = 'Four to go!'
+    } else if(clearedWords.length === 1){
+        messageEl.textContent = 'Three to go!'
+    } else if(clearedWords.length === 2){
+        messageEl.textContent = 'Two to go!'
+    } else if(clearedWords.length === 3){
+        messageEl.textContent = 'Almost there!'
+    } else if(clearedWords.length === 4){
+                messageEl.textContent = 'YOU WON!'
+
+    }
+}
+
+function lose(){
+     if(attempts === 0){
+        messageEl.textContent = ''
+    } else { messageEl.textContent = 'YOU LOST!'}
+}
 /*----------------------------- Event Listeners -----------------------------*/
 
 
