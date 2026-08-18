@@ -273,7 +273,7 @@ function shuffleBtn() {
         }
     })
 }
-
+shuffleBtn()
 
 function updateMessage(){
     if(clearedWords.length === 0){
