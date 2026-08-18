@@ -110,6 +110,7 @@ const clearedWords = [] // to store cleared arrays in one array
 
 let attempts = 4
 console.log('attempts:' + attempts)
+let winner = null
 
 
 /*------------------------ Cached Element References ------------------------*/
@@ -124,6 +125,8 @@ const shuffleEl = document.querySelector('.shuffle')
 const attemptsEl = document.querySelectorAll('.attempt')
 // console.log(attemptsEl)
 // console.log(attemptsEl.length)
+const messageEl = document.querySelector('#message')
+// console.log(messageEl)
 
 /*-------------------------------- Functions --------------------------------*/
 
@@ -239,21 +242,32 @@ function submit() {
 
 
 function shuffleBtn() {
-    // console.log('shuffle works!')
     words.sort(() => Math.random() - 0.5)
-    console.log(words)
+
     allWordElements.forEach((oneWordElement, index) => {
+
+        oneWordElement.classList.remove('difficulty-1')
+        oneWordElement.classList.remove('difficulty-2')
+        oneWordElement.classList.remove('difficulty-3')
+        oneWordElement.classList.remove('difficulty-4')
+        oneWordElement.classList.remove('unclickable')
+        oneWordElement.classList.add('clickable')
+
         oneWordElement.textContent = words[index].word
 
-        const isCleared = clearedWords.some((group) => { group.includes(words[index].word) })
-        console.log(words[index].word)
-        if (isCleared) {
-            oneWordElement.classList.add('unclickable')
-            oneWordElement.classList.remove('clickable')
-            oneWordElement.classList.add(`difficulty-${difficulty}`)
-            oneWordElement.classList.remove('selected')
-        }
+        const isCleared = clearedWords.some((group) => {
+            return group.includes(words[index].word)
+        })
 
+        if (isCleared) {
+            const difficulty = words.find((object) => {
+                return object.word === words[index].word
+            }).difficulty
+
+            oneWordElement.classList.add(`difficulty-${difficulty}`)
+            oneWordElement.classList.remove('clickable')
+            oneWordElement.classList.add('unclickable')
+        }
     })
 }
 
@@ -264,9 +278,7 @@ allWordElements.forEach((oneWordElement, index) => {
     oneWordElement.addEventListener('click', handleClick)
     oneWordElement.textContent = words[index].word
     oneWordElement.classList.add('clickable')
-
 })
-
 
 deSelectAllEl.addEventListener('click', deSelectAll)
 submitEL.addEventListener('click', submit)
