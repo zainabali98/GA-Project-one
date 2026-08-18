@@ -1,12 +1,14 @@
 console.log('Project-1: Connections')
 
-
+// win/lose msg
+// fix color/shuffle issue
 
 /*-------------------------------- Constants --------------------------------*/
 // Garden, Forest, Grow, River... Nature
 // Moon, Planet, Alien, spaceship... Space
 // Hope, Brave, Comfort, Fear... Emotions
 // Coach, Goal, medal, Track... sports
+
 const words = [
     {
         word: 'Garden',
@@ -242,7 +244,15 @@ function shuffleBtn() {
     console.log(words)
     allWordElements.forEach((oneWordElement, index) => {
         oneWordElement.textContent = words[index].word
+
+        const isCleared = clearedWords.some((group) => { group.includes(words[index].word) })
         console.log(words[index].word)
+        if (isCleared) {
+            oneWordElement.classList.add('unclickable')
+            oneWordElement.classList.remove('clickable')
+            oneWordElement.classList.add(`difficulty-${difficulty}`)
+            oneWordElement.classList.remove('selected')
+        }
 
     })
 }
